@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Default VALUE {% endblock %}</title>
+</head>
+<body>
+    <header class="py-3 mb-4 border-bottom">
+        <div class="container d-flex flex-wrap justify-content-center">
+          <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" viewBox="0 0 32 32"><defs><style>.cls-1{fill:#000;}.cls-2{fill:#ffff;}.cls-3{fill:#039be5;}</style></defs>><use xlink:href="http://www.w3.org/2000/svg"/>
+                <path class="cls-1" d="M26,1H13a1,1,0,0,0-.71.29l-7,7A1,1,0,0,0,5,9V30a1,1,0,0,0,1,1H26a1,1,0,0,0,1-1V2A1,1,0,0,0,26,1Z"/><path class="cls-2" d="M12.29,1.29l-7,7A1,1,0,0,0,6,10h7a1,1,0,0,0,1-1V2A1,1,0,0,0,12.29,1.29Z"/><path class="cls-3" d="M30.11,3.15,24.35,1.48a1,1,0,0,0-1.24.68L20.88,9.85a1,1,0,0,0-1.24.68,1,1,0,0,0,.68,1.24l2.88.83-1.11,3.84A1,1,0,0,0,24,17l1.11-3.84c1.38.41,3,.88,3.16.88a1,1,0,0,0,.28-2h0l2.23-7.69A1,1,0,0,0,30.11,3.15Z"/><path class="cls-3" d="M17,17H11a1,1,0,0,1,0-2h6a1,1,0,0,1,0,2Z"/><path class="cls-2" d="M17,21H11a1,1,0,0,1,0-2h6a1,1,0,0,1,0,2Z"/><path class="cls-2" d="M21,25H11a1,1,0,0,1,0-2H21a1,1,0,0,1,0,2Z"/></svg>
+            <span class="fs-4">POST YOUR POSTS</span>
+          </a>
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0" action="{% url 'index' %}" method="get">
+            <input type="search" class="form-control" placeholder="Поиск..." aria-label="Search" name="q">
+          </form>
+        </div>
+    </header>
+    {% block body %}
+    
+    {% endblock %}
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

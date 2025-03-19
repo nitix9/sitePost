@@ -1,0 +1,65 @@
+{% extends 'main/base.html'%}
+{% block title %} Посты {% endblock %}
+{% block body %}
+<div class="container">
+    {% if query %}
+      {% if posts %}
+      {% for post in posts %}
+      <div >
+        <div class="p-2">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <h3 class="mb-0">{{post.title}}</h3>
+              <div class="mb-1 text-body-secondary">{{post.date|date:"d E Y"}}</div>
+              <p class="card-text mb-auto">{{post.short_description}}</p>
+              <a href="{% url 'post_detail' post.id %}" class="icon-link gap-1 icon-link-hover stretched-link">
+                Перейти
+                <svg class="bi"><use xlink:href="{% url 'post_detail' post.id %}"/></svg>
+              </a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+              <img class="bd-placeholder-img" src="/media/{{post.image}}" width="200" height="250" style="object-fit: cover;filter: brightness(50%);">
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+                 <div class="alert alert-warning mt-4" role="alert">
+                  По вашему запросу "{{ query }}", ничего не найдено.
+              </div>
+          {% endif %}
+    {% else %}
+    {% for post in posts %}
+    <div >
+        <div class="p-2">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <h3 class="mb-0">{{post.title}}</h3>
+              <div class="mb-1 text-body-secondary">{{post.date|date:"d E Y"}}</div>
+              <p class="card-text mb-auto">{{post.short_description}}</p>
+              <a href="{% url 'post_detail' post.id %}" class="icon-link gap-1 icon-link-hover stretched-link">
+                Перейти
+                <svg class="bi"><use xlink:href="{% url 'post_detail' post.id %}"/></svg>
+              </a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+              <img class="bd-placeholder-img" src="/media/{{post.image}}" width="200" height="250" style="object-fit: cover;filter: brightness(50%);">
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+    {% endif %}
+    <div class="pagination d-flex justify-content-center">
+      {% for num in posts.paginator.page_range %}
+          {% if posts.number == num %}
+          <li class="page-item active"><a href="?page={{ num }}" class="page-link">{{ num }}</a></li>
+          {% else %}
+              <ul class="pagination">
+                <li class="page-item"><a href="?page={{ num }}" class="page-link">{{ num }}</a></li>
+              </ul>
+          {% endif %}
+      {% endfor %}
+
+  </div>
+</div>
+{% endblock %}
