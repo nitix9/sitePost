@@ -7,7 +7,7 @@ from django.http import Http404
 def index (request):
     query = request.GET.get('q')
     if query:
-        posts = models.Post.objects.filter(title__icontains=query)
+        posts = models.Post.objects.filter(title__iregex=query)
     else: posts = models.Post.objects.all() 
     paginator = Paginator(posts, 5) 
 
